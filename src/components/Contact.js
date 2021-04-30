@@ -12,7 +12,7 @@ const ContactInfo = (props) => {
         type='text'
         placeholder='Name'
         value={contactText.name}
-        onChange={(e) => updateInput(e, 'Name')}
+        onChange={(e) => updateInput(e, 'name')}
         required
       />
 
@@ -22,7 +22,7 @@ const ContactInfo = (props) => {
         type='text'
         placeholder='Address'
         value={contactText.address}
-        onChange={(e) => updateInput(e, 'Address')}
+        onChange={(e) => updateInput(e, 'address')}
       />
 
       <label htmlFor='city'>City</label>
@@ -31,7 +31,7 @@ const ContactInfo = (props) => {
         type='text'
         placeholder='City'
         value={contactText.city}
-        onChange={(e) => updateInput(e, 'City')}
+        onChange={(e) => updateInput(e, 'city')}
       />
 
       <label htmlFor='number'>Phone Number</label>
@@ -40,7 +40,7 @@ const ContactInfo = (props) => {
         type='tel'
         placeholder='Phone Number'
         value={contactText.phone}
-        onChange={(e) => updateInput(e, 'Phone')}
+        onChange={(e) => updateInput(e, 'phone')}
       />
 
       <label htmlFor='email'>Email</label>
@@ -49,7 +49,7 @@ const ContactInfo = (props) => {
         type='email'
         placeholder='Email'
         value={contactText.email}
-        onChange={(e) => updateInput(e, 'Email')}
+        onChange={(e) => updateInput(e, 'email')}
         required
       />
     </form>

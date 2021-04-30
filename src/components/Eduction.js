@@ -32,7 +32,7 @@ const EducationForm = (props) => {
         type='text'
         placeholder='School'
         value={educationText.school}
-        onChange={(e) => updateEducationText(e, 'School')}
+        onChange={(e) => updateEducationText(e, 'school')}
         required
       />
 
@@ -42,7 +42,7 @@ const EducationForm = (props) => {
         type='checkbox'
         name='currentlyEnrolled'
         checked={educationText.currentlyEnrolled}
-        onChange={(e) => updateEducationText(e, 'Currently Enrolled')}
+        onChange={(e) => updateEducationText(e, 'currentlyEnrolled')}
       />
 
       <label htmlFor='dateStart'>Date Started</label>
@@ -50,7 +50,7 @@ const EducationForm = (props) => {
         id='dateStart'
         type='text'
         value={educationText.dateStart}
-        onChange={(e) => updateEducationText(e, 'Date Start')}
+        onChange={(e) => updateEducationText(e, 'dateStart')}
         required
       />
 
@@ -62,7 +62,7 @@ const EducationForm = (props) => {
         name='schoolDescriptuon'
         placeholder='School Description'
         value={educationText.description}
-        onChange={(e) => updateEducationText(e, 'Description')}
+        onChange={(e) => updateEducationText(e, 'description')}
       />
       <button type='submit' onClick={addEducation}>
         Add School

@@ -29,7 +29,7 @@ const WorkForm = (props) => {
         type='text'
         placeholder='Company'
         value={workText.company}
-        onChange={(e) => updateWorkText(e, 'Company')}
+        onChange={(e) => updateWorkText(e, 'company')}
         required
       />
 
@@ -39,7 +39,7 @@ const WorkForm = (props) => {
         type='checkbox'
         name='currentJob'
         checked={workText.currentJob}
-        onChange={(e) => updateWorkText(e, 'Current Job')}
+        onChange={(e) => updateWorkText(e, 'currentJob')}
       />
 
       <label htmlFor='dateStart'>Date Started</label>
@@ -47,7 +47,7 @@ const WorkForm = (props) => {
         id='dateStart'
         type='text'
         value={workText.dateStart}
-        onChange={(e) => updateWorkText(e, 'Date Start')}
+        onChange={(e) => updateWorkText(e, 'dateStart')}
         required
       />
 
@@ -59,7 +59,7 @@ const WorkForm = (props) => {
         name='jobDescriptuon'
         placeholder='Job Description'
         value={workText.description}
-        onChange={(e) => updateWorkText(e, 'Description')}
+        onChange={(e) => updateWorkText(e, 'description')}
       />
       <button type='submit' onClick={addWork}>
         Add Job

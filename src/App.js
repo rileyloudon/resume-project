@@ -10,6 +10,7 @@ class App extends React.Component {
 
     this.state = {
       contactText: { name: '', address: '', city: '', phone: '', email: '' },
+
       workItems: [],
       workText: {
         company: '',
@@ -18,6 +19,7 @@ class App extends React.Component {
         currentJob: false,
         description: '',
       },
+
       educationItems: [],
       educationText: {
         school: '',
@@ -30,15 +32,13 @@ class App extends React.Component {
   }
 
   updateContactText = (e, textField) => {
+    const tempContactText = {
+      ...this.state.contactText,
+      [textField]: e.target.value,
+    };
+
     this.setState({
-      contactText: {
-        name: textField === 'Name' ? e.target.value : this.state.contactText.name,
-        address:
-          textField === 'Address' ? e.target.value : this.state.contactText.address,
-        city: textField === 'City' ? e.target.value : this.state.contactText.city,
-        phone: textField === 'Phone' ? e.target.value : this.state.contactText.phone,
-        email: textField === 'Email' ? e.target.value : this.state.contactText.email,
-      },
+      contactText: tempContactText,
     });
   };
 
@@ -46,6 +46,7 @@ class App extends React.Component {
     const { workText } = this.state;
 
     e.preventDefault();
+
     if (
       workText.company === '' ||
       workText.dateStart === '' ||
@@ -66,29 +67,13 @@ class App extends React.Component {
   };
 
   updateWorkText = (e, textField) => {
+    const tempWorkText = {
+      ...this.state.workText,
+      [textField]: e.target.value,
+    };
+
     this.setState({
-      workText: {
-        company:
-          textField === 'Company' ? e.target.value : this.state.workText.company,
-
-        currentJob:
-          textField === 'Current Job'
-            ? e.target.checked
-            : this.state.workText.currentJob,
-
-        dateStart:
-          textField === 'Date Start'
-            ? e.target.value
-            : this.state.workText.dateStart,
-
-        dateEnd:
-          textField === 'Date End' ? e.target.value : this.state.workText.dateEnd,
-
-        description:
-          textField === 'Description'
-            ? e.target.value
-            : this.state.workText.description,
-      },
+      workText: tempWorkText,
     });
   };
 
@@ -96,6 +81,7 @@ class App extends React.Component {
     const { educationText } = this.state;
 
     e.preventDefault();
+
     if (
       educationText.company === '' ||
       educationText.dateStart === '' ||
@@ -116,31 +102,13 @@ class App extends React.Component {
   };
 
   updateEducationText = (e, textField) => {
+    const tempEducationText = {
+      ...this.state.educationText,
+      [textField]: e.target.value,
+    };
+
     this.setState({
-      educationText: {
-        school:
-          textField === 'School' ? e.target.value : this.state.educationText.school,
-
-        currentlyEnrolled:
-          textField === 'Currently Enrolled'
-            ? e.target.checked
-            : this.state.educationText.currentlyEnrolled,
-
-        dateStart:
-          textField === 'Date Start'
-            ? e.target.value
-            : this.state.educationText.dateStart,
-
-        dateEnd:
-          textField === 'Date End'
-            ? e.target.value
-            : this.state.educationText.dateEnd,
-
-        description:
-          textField === 'Description'
-            ? e.target.value
-            : this.state.educationText.description,
-      },
+      educationText: tempEducationText,
     });
   };
 
