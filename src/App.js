@@ -18,6 +18,14 @@ class App extends React.Component {
         currentJob: false,
         description: '',
       },
+      educationItems: [],
+      educationText: {
+        school: '',
+        dateStart: '',
+        dateEnd: '',
+        currentlyEnrolled: false,
+        description: '',
+      },
     };
   }
 
@@ -79,7 +87,59 @@ class App extends React.Component {
         description:
           textField === 'Description'
             ? e.target.value
-            : this.state.contactText.email,
+            : this.state.workText.description,
+      },
+    });
+  };
+
+  addEducation = (e) => {
+    const { educationText } = this.state;
+
+    e.preventDefault();
+    if (
+      educationText.company === '' ||
+      educationText.dateStart === '' ||
+      (!educationText.currentJob && educationText.lastDay === '')
+    )
+      return;
+
+    this.setState({
+      educationItems: this.state.educationItems.concat(this.state.educationText),
+      educationText: {
+        school: '',
+        currentlyEnrolled: false,
+        dateStart: '',
+        dateEnd: '',
+        description: '',
+      },
+    });
+  };
+
+  updateEducationText = (e, textField) => {
+    this.setState({
+      educationText: {
+        school:
+          textField === 'School' ? e.target.value : this.state.educationText.school,
+
+        currentlyEnrolled:
+          textField === 'Currently Enrolled'
+            ? e.target.checked
+            : this.state.educationText.currentlyEnrolled,
+
+        dateStart:
+          textField === 'Date Start'
+            ? e.target.value
+            : this.state.educationText.dateStart,
+
+        dateEnd:
+          textField === 'Date End'
+            ? e.target.value
+            : this.state.educationText.dateEnd,
+
+        description:
+          textField === 'Description'
+            ? e.target.value
+            : this.state.educationText.description,
       },
     });
   };
@@ -98,7 +158,12 @@ class App extends React.Component {
           addWork={this.addWork}
           updateWorkText={this.updateWorkText}
         />
-        <Education />
+        <Education
+          educationItems={this.state.educationItems}
+          educationText={this.state.educationText}
+          addEducation={this.addEducation}
+          updateEducationText={this.updateEducationText}
+        />
       </div>
     );
   }
