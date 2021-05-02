@@ -49,7 +49,9 @@ const EducationForm = (props) => {
       </label>
 
       <label>
-        Date Started
+        {educationText.currentlyEnrolled === false
+          ? 'Date Started'
+          : 'Date Started *'}
         <input
           type='text'
           placeholder='Date Started'
@@ -62,7 +64,7 @@ const EducationForm = (props) => {
       {showEndDate}
 
       <label className='school-description'>
-        Job Description
+        School Description
         <textarea
           name='schoolDescriptuon'
           placeholder='School Description'
@@ -85,7 +87,7 @@ const EducationItem = (props) => {
       <h3 className='school-name'>{education.school} </h3>
       <p className='dates-studying'>
         {education.dateStart} {education.dateStart ? '-' : null}{' '}
-        {education.currentJob ? 'Present' : education.dateEnd}
+        {education.currentlyEnrolled ? 'Present' : education.dateEnd}
       </p>
       <p className='saved-school-description'>{education.description}</p>
     </div>
@@ -104,7 +106,7 @@ const Education = (props) => {
         addEducation={addEducation}
       />
       {educationItems.map((education) => (
-        <EducationItem education={education} />
+        <EducationItem key={education.id} education={education} />
       ))}
     </div>
   );
