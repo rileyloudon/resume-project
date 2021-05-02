@@ -100,7 +100,7 @@ const WorkExperience = (props) => {
         addWork={addWork}
       />
       {workItems.map((work) => (
-        <WorkItem work={work} />
+        <WorkItem key={work.id} work={work} />
       ))}
     </div>
   );
