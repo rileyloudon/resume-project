@@ -1,3 +1,11 @@
-.App {
-  text-align: center;
+#resume-generator {
+  max-width: max-content;
+  width: 100vw;
+  margin: auto;
+}
+
+header {
+  width: fit-content;
+  margin: auto;
+  margin-top: 10px;
 }
