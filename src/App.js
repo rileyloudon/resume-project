@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { v1 as uuid } from 'uuid';
 import ContactInfo from './components/Contact';
 import Education from './components/Eduction';
 import WorkExperience from './components/WorkExperience';
@@ -18,6 +19,7 @@ class App extends React.Component {
         dateEnd: '',
         currentJob: false,
         description: '',
+        id: uuid(),
       },
 
       educationItems: [],
@@ -27,6 +29,7 @@ class App extends React.Component {
         dateEnd: '',
         currentlyEnrolled: false,
         description: '',
+        id: uuid(),
       },
     };
   }
@@ -62,6 +65,7 @@ class App extends React.Component {
         dateStart: '',
         dateEnd: '',
         description: '',
+        id: uuid(),
       },
     });
   };
@@ -83,8 +87,9 @@ class App extends React.Component {
     e.preventDefault();
 
     if (
-      educationText.company === '' ||
-      (!educationText.currentJob && educationText.lastDay === '')
+      educationText.school === '' ||
+      (!educationText.currentlyEnrolled && educationText.lastDay === '') ||
+      (educationText.currentlyEnrolled && educationText.dateStart === '')
     )
       return;
 
@@ -96,6 +101,7 @@ class App extends React.Component {
         dateStart: '',
         dateEnd: '',
         description: '',
+        id: uuid(),
       },
     });
   };
@@ -103,7 +109,6 @@ class App extends React.Component {
   updateEducationText = (e, textField) => {
     const tempEducationText = {
       ...this.state.educationText,
-
       [textField]:
         textField === 'currentlyEnrolled' ? e.target.checked : e.target.value,
     };
