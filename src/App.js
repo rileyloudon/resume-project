@@ -69,7 +69,7 @@ class App extends React.Component {
   updateWorkText = (e, textField) => {
     const tempWorkText = {
       ...this.state.workText,
-      [textField]: e.target.value,
+      [textField]: textField === 'currentJob' ? e.target.checked : e.target.value,
     };
 
     this.setState({
@@ -84,7 +84,6 @@ class App extends React.Component {
 
     if (
       educationText.company === '' ||
-      educationText.dateStart === '' ||
       (!educationText.currentJob && educationText.lastDay === '')
     )
       return;
@@ -104,7 +103,9 @@ class App extends React.Component {
   updateEducationText = (e, textField) => {
     const tempEducationText = {
       ...this.state.educationText,
-      [textField]: e.target.value,
+
+      [textField]:
+        textField === 'currentlyEnrolled' ? e.target.checked : e.target.value,
     };
 
     this.setState({
@@ -114,8 +115,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <header>Resume</header>
+      <div id='resume-generator'>
+        <header>
+          <h2>Resume Generator</h2>
+        </header>
         <ContactInfo
           contactText={this.state.contactText}
           updateInput={this.updateContactText}
