@@ -89,16 +89,18 @@ const WorkItem = (props) => {
 };
 
 const WorkExperience = (props) => {
-  const { workText, workItems, updateWorkText, addWork } = props;
+  const { workText, workItems, updateWorkText, addWork, submitResume } = props;
 
   return (
     <div id='work-experience'>
       <h2>Work Experience</h2>
-      <WorkForm
-        workText={workText}
-        updateWorkText={updateWorkText}
-        addWork={addWork}
-      />
+      {!submitResume && (
+        <WorkForm
+          workText={workText}
+          updateWorkText={updateWorkText}
+          addWork={addWork}
+        />
+      )}
       {workItems.map((work) => (
         <WorkItem key={work.id} work={work} />
       ))}

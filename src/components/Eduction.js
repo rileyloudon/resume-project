@@ -95,16 +95,24 @@ const EducationItem = (props) => {
 };
 
 const Education = (props) => {
-  const { educationText, educationItems, updateEducationText, addEducation } = props;
+  const {
+    educationText,
+    educationItems,
+    updateEducationText,
+    addEducation,
+    submitResume,
+  } = props;
 
   return (
     <div id='education'>
       <h2>Education</h2>
-      <EducationForm
-        educationText={educationText}
-        updateEducationText={updateEducationText}
-        addEducation={addEducation}
-      />
+      {!submitResume && (
+        <EducationForm
+          educationText={educationText}
+          updateEducationText={updateEducationText}
+          addEducation={addEducation}
+        />
+      )}
       {educationItems.map((education) => (
         <EducationItem key={education.id} education={education} />
       ))}

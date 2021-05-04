@@ -1,11 +1,10 @@
 import '../styles/Contact.css';
 
-const ContactInfo = (props) => {
+const ContactForm = (props) => {
   const { contactText, updateInput } = props;
 
   return (
     <form id='contact-form'>
-      <h2>Contact Info</h2>
       <label>
         Name *
         <input
@@ -63,6 +62,36 @@ const ContactInfo = (props) => {
         />
       </label>
     </form>
+  );
+};
+
+const ContactData = (props) => {
+  const { contactText } = props;
+
+  return (
+    <div className='saved-conact-info'>
+      <p>{contactText.name}</p>
+      <p>{contactText.address}</p>
+      <p>{contactText.city}</p>
+      <p>{contactText.phone}</p>
+      <p>{contactText.email}</p>
+    </div>
+  );
+};
+
+const ContactInfo = (props) => {
+  const { contactText, updateInput, submitResume } = props;
+
+  return (
+    <div id='contact-info'>
+      <h2>Contact Info</h2>
+
+      {submitResume ? (
+        <ContactData contactText={contactText} />
+      ) : (
+        <ContactForm contactText={contactText} updateInput={updateInput} />
+      )}
+    </div>
   );
 };
 
