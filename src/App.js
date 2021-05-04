@@ -31,6 +31,8 @@ class App extends React.Component {
         description: '',
         id: uuid(),
       },
+
+      viewResume: false,
     };
   }
 
@@ -118,27 +120,37 @@ class App extends React.Component {
     });
   };
 
+  handleSubmitResume = () => {
+    this.setState({ viewResume: this.state.viewResume ? false : true });
+  };
+
   render() {
     return (
       <div id='resume-generator'>
         <header>
           <h2>Resume Generator</h2>
+          <button className='submit-resume' onClick={this.handleSubmitResume}>
+            {this.state.viewResume ? 'Back' : 'Submit'}
+          </button>
         </header>
         <ContactInfo
           contactText={this.state.contactText}
           updateInput={this.updateContactText}
+          viewResume={this.state.viewResume}
         />
         <WorkExperience
           workItems={this.state.workItems}
           workText={this.state.workText}
           addWork={this.addWork}
           updateWorkText={this.updateWorkText}
+          viewResume={this.state.viewResume}
         />
         <Education
           educationItems={this.state.educationItems}
           educationText={this.state.educationText}
           addEducation={this.addEducation}
           updateEducationText={this.updateEducationText}
+          viewResume={this.state.viewResume}
         />
       </div>
     );
