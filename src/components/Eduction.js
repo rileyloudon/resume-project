@@ -80,11 +80,19 @@ const EducationForm = (props) => {
 };
 
 const EducationItem = (props) => {
-  const { education } = props;
+  const { education, submitResume, editEducation, i } = props;
 
   return (
     <div className='saved-education'>
       <h3 className='school-name'>{education.school} </h3>
+      {!submitResume && (
+        <img
+          className='edit-school'
+          src='img/edit_24dp.svg'
+          alt='Edit School'
+          onClick={() => editEducation(i)}
+        />
+      )}
       <p className='dates-studying'>
         {education.dateStart} {education.dateStart ? '-' : null}{' '}
         {education.currentlyEnrolled ? 'Present' : education.dateEnd}
@@ -101,6 +109,7 @@ const Education = (props) => {
     updateEducationText,
     addEducation,
     submitResume,
+    editEducation,
   } = props;
 
   return (
@@ -113,8 +122,14 @@ const Education = (props) => {
           addEducation={addEducation}
         />
       )}
-      {educationItems.map((education) => (
-        <EducationItem key={education.id} education={education} />
+      {educationItems.map((education, i) => (
+        <EducationItem
+          key={education.id}
+          education={education}
+          submitResume={submitResume}
+          editEducation={editEducation}
+          i={i}
+        />
       ))}
     </div>
   );

@@ -55,7 +55,7 @@ class App extends React.Component {
     if (
       workText.company === '' ||
       workText.dateStart === '' ||
-      (!workText.currentJob && workText.lastDay === '')
+      (!workText.currentJob && workText.dateEnd === '')
     )
       return;
 
@@ -69,6 +69,19 @@ class App extends React.Component {
         description: '',
         id: uuid(),
       },
+    });
+  };
+
+  editWork = (i) => {
+    const edittedJob = this.state.workItems[i];
+    const removeJob = this.state.workItems.splice(i, 1);
+    const filteredWorkItems = this.state.workItems.filter(
+      (work) => work !== removeJob
+    );
+
+    this.setState({
+      workText: edittedJob,
+      workItems: filteredWorkItems,
     });
   };
 
@@ -90,7 +103,7 @@ class App extends React.Component {
 
     if (
       educationText.school === '' ||
-      (!educationText.currentlyEnrolled && educationText.lastDay === '') ||
+      (!educationText.currentlyEnrolled && educationText.dateEnd === '') ||
       (educationText.currentlyEnrolled && educationText.dateStart === '')
     )
       return;
@@ -105,6 +118,19 @@ class App extends React.Component {
         description: '',
         id: uuid(),
       },
+    });
+  };
+
+  editEducation = (i) => {
+    const edittedSchool = this.state.educationItems[i];
+    const removeSchool = this.state.educationItems.splice(i, 1);
+    const filteredSchoolItems = this.state.educationItems.filter(
+      (school) => school !== removeSchool
+    );
+
+    this.setState({
+      educationText: edittedSchool,
+      educationItems: filteredSchoolItems,
     });
   };
 
@@ -144,6 +170,7 @@ class App extends React.Component {
           addWork={this.addWork}
           updateWorkText={this.updateWorkText}
           submitResume={this.state.submitResume}
+          editWork={this.editWork}
         />
         <Education
           educationItems={this.state.educationItems}
@@ -151,6 +178,7 @@ class App extends React.Component {
           addEducation={this.addEducation}
           updateEducationText={this.updateEducationText}
           submitResume={this.state.submitResume}
+          editEducation={this.editEducation}
         />
       </div>
     );

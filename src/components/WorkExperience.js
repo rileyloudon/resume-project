@@ -75,11 +75,19 @@ const WorkForm = (props) => {
 };
 
 const WorkItem = (props) => {
-  const { work } = props;
+  const { work, submitResume, editWork, i } = props;
 
   return (
     <div className='saved-jobs'>
       <h3 className='company-name'>{work.company}</h3>
+      {!submitResume && (
+        <img
+          className='edit-job'
+          src='img/edit_24dp.svg'
+          alt='Edit Job'
+          onClick={() => editWork(i)}
+        />
+      )}
       <p className='dates-worked'>
         {work.dateStart} - {work.currentJob ? 'Present' : work.dateEnd}
       </p>
@@ -89,7 +97,14 @@ const WorkItem = (props) => {
 };
 
 const WorkExperience = (props) => {
-  const { workText, workItems, updateWorkText, addWork, submitResume } = props;
+  const {
+    workText,
+    workItems,
+    updateWorkText,
+    addWork,
+    submitResume,
+    editWork,
+  } = props;
 
   return (
     <div id='work-experience'>
@@ -101,8 +116,14 @@ const WorkExperience = (props) => {
           addWork={addWork}
         />
       )}
-      {workItems.map((work) => (
-        <WorkItem key={work.id} work={work} />
+      {workItems.map((work, i) => (
+        <WorkItem
+          key={work.id}
+          work={work}
+          submitResume={submitResume}
+          editWork={editWork}
+          i={i}
+        />
       ))}
     </div>
   );
