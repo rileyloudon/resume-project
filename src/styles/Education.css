@@ -5,6 +5,7 @@
 #education {
   margin-left: 20px;
   width: fit-content;
+  margin-bottom: 100px;
 }
 
 #education h2 {
@@ -88,4 +89,14 @@
 .education-error {
   margin-left: 20px;
   color: #e83131;
+}
+
+@media (max-width: 600px) {
+  #school-form #currentlyEnrolled {
+    transform: scale(1);
+  }
+
+  #school-form .school-description textarea {
+    width: 75vw;
+  }
 }

@@ -85,3 +85,13 @@
   margin-left: 20px;
   color: #e83131;
 }
+
+@media (max-width: 600px) {
+  #work-form #currentJob {
+    transform: scale(1);
+  }
+
+  #work-form .job-description textarea {
+    width: 75vw;
+  }
+}
