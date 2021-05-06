@@ -80,7 +80,7 @@ const ContactData = (props) => {
 
   return (
     <div className='saved-conact-info'>
-      <h2>{contactText.name}</h2>
+      <h1>{contactText.name}</h1>
       <div className='contact-left'>
         <h4>{contactText.address}</h4>
         <h4>{contactText.city}</h4>
