@@ -11,6 +11,7 @@ class App extends React.Component {
 
     this.state = {
       contactText: { name: '', address: '', city: '', phone: '', email: '' },
+      contactErrorMessage: '',
 
       workItems: [],
       workText: {
@@ -21,6 +22,7 @@ class App extends React.Component {
         description: '',
         id: uuid(),
       },
+      workErrorMessage: '',
 
       educationItems: [],
       educationText: {
@@ -31,6 +33,7 @@ class App extends React.Component {
         description: '',
         id: uuid(),
       },
+      educationErrorMessage: '',
 
       submitResume: false,
     };
@@ -52,12 +55,23 @@ class App extends React.Component {
 
     e.preventDefault();
 
-    if (
-      workText.company === '' ||
-      workText.dateStart === '' ||
-      (!workText.currentJob && workText.dateEnd === '')
-    )
-      return;
+    if (workText.company === '') {
+      return this.setState({
+        workErrorMessage: 'Please enter a company name',
+      });
+    }
+
+    if (workText.dateStart === '') {
+      return this.setState({
+        workErrorMessage: 'Please enter a start date',
+      });
+    }
+
+    if (!workText.currentJob && workText.dateEnd === '') {
+      return this.setState({
+        workErrorMessage: 'Please enter your last working day',
+      });
+    }
 
     this.setState({
       workItems: this.state.workItems.concat(this.state.workText),
@@ -69,6 +83,7 @@ class App extends React.Component {
         description: '',
         id: uuid(),
       },
+      workErrorMessage: '',
     });
   };
 
@@ -101,12 +116,23 @@ class App extends React.Component {
 
     e.preventDefault();
 
-    if (
-      educationText.school === '' ||
-      (!educationText.currentlyEnrolled && educationText.dateEnd === '') ||
-      (educationText.currentlyEnrolled && educationText.dateStart === '')
-    )
-      return;
+    if (educationText.school === '') {
+      return this.setState({
+        educationErrorMessage: "Please enter your school's name",
+      });
+    }
+
+    if (!educationText.currentlyEnrolled && educationText.dateEnd === '') {
+      return this.setState({
+        educationErrorMessage: 'Please enter your last school day',
+      });
+    }
+
+    if (educationText.currentlyEnrolled && educationText.dateStart === '') {
+      return this.setState({
+        educationErrorMessage: 'Please enter your first school day',
+      });
+    }
 
     this.setState({
       educationItems: this.state.educationItems.concat(this.state.educationText),
@@ -118,6 +144,7 @@ class App extends React.Component {
         description: '',
         id: uuid(),
       },
+      educationErrorMessage: '',
     });
   };
 
@@ -146,8 +173,53 @@ class App extends React.Component {
     });
   };
 
-  handleSubmitResume = () => {
+  setSubmitResume = () => {
     this.setState({ submitResume: this.state.submitResume ? false : true });
+  };
+
+  validateContactText = () => {
+    const { name, address, city, phone, email } = this.state.contactText;
+
+    if (name === '') {
+      return this.setState({
+        contactErrorMessage: 'Please enter your first and last name',
+      });
+    }
+
+    if (address === '') {
+      return this.setState({
+        contactErrorMessage: 'Please enter your address',
+      });
+    }
+
+    if (city === '') {
+      return this.setState({
+        contactErrorMessage: 'Please enter your city',
+      });
+    }
+
+    if (phone === '') {
+      return this.setState({
+        contactErrorMessage: 'Please enter your phone number',
+      });
+    }
+
+    const emailRegex = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+
+    if (!emailRegex.test(email)) {
+      return this.setState({
+        contactErrorMessage: 'Please enter a valid email',
+      });
+    }
+
+    if (email === '') {
+      return this.setState({
+        contactErrorMessage: 'Please enter your email',
+      });
+    }
+
+    this.setState({ contactErrorMessage: '' });
+    this.setSubmitResume();
   };
 
   render() {
@@ -155,7 +227,7 @@ class App extends React.Component {
       <div id='resume-generator'>
         <header>
           <h2>Resume Generator</h2>
-          <button className='submit-resume' onClick={this.handleSubmitResume}>
+          <button className='submit-resume' onClick={this.validateContactText}>
             {this.state.submitResume ? 'Back' : 'Submit'}
           </button>
         </header>
@@ -163,6 +235,7 @@ class App extends React.Component {
           contactText={this.state.contactText}
           updateInput={this.updateContactText}
           submitResume={this.state.submitResume}
+          contactErrorMessage={this.state.contactErrorMessage}
         />
         <WorkExperience
           workItems={this.state.workItems}
@@ -171,6 +244,7 @@ class App extends React.Component {
           updateWorkText={this.updateWorkText}
           submitResume={this.state.submitResume}
           editWork={this.editWork}
+          workErrorMessage={this.state.workErrorMessage}
         />
         <Education
           educationItems={this.state.educationItems}
@@ -179,6 +253,7 @@ class App extends React.Component {
           updateEducationText={this.updateEducationText}
           submitResume={this.state.submitResume}
           editEducation={this.editEducation}
+          educationErrorMessage={this.state.educationErrorMessage}
         />
       </div>
     );

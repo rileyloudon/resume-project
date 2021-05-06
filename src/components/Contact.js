@@ -1,12 +1,22 @@
 import '../styles/Contact.css';
 
+const ShowError = (props) => {
+  const { contactErrorMessage } = props;
+  if (contactErrorMessage === '') return null;
+
+  return <div className='contact-error'>{contactErrorMessage}</div>;
+};
+
 const ContactForm = (props) => {
-  const { contactText, updateInput } = props;
+  const { contactText, updateInput, contactErrorMessage } = props;
 
   return (
     <form id='contact-form'>
+      <h2>Contact Info</h2>
+      <ShowError contactErrorMessage={contactErrorMessage} />
+
       <label>
-        Name *
+        First and Last Name *
         <input
           id='name'
           type='text'
@@ -70,26 +80,32 @@ const ContactData = (props) => {
 
   return (
     <div className='saved-conact-info'>
-      <p>{contactText.name}</p>
-      <p>{contactText.address}</p>
-      <p>{contactText.city}</p>
-      <p>{contactText.phone}</p>
-      <p>{contactText.email}</p>
+      <h2>{contactText.name}</h2>
+      <div className='contact-left'>
+        <h4>{contactText.address}</h4>
+        <h4>{contactText.city}</h4>
+      </div>
+      <div className='contact-right'>
+        <h4>{contactText.phone}</h4>
+        <h4>{contactText.email}</h4>
+      </div>
     </div>
   );
 };
 
 const ContactInfo = (props) => {
-  const { contactText, updateInput, submitResume } = props;
+  const { contactText, updateInput, submitResume, contactErrorMessage } = props;
 
   return (
     <div id='contact-info'>
-      <h2>Contact Info</h2>
-
       {submitResume ? (
         <ContactData contactText={contactText} />
       ) : (
-        <ContactForm contactText={contactText} updateInput={updateInput} />
+        <ContactForm
+          contactText={contactText}
+          updateInput={updateInput}
+          contactErrorMessage={contactErrorMessage}
+        />
       )}
     </div>
   );

@@ -1,5 +1,12 @@
 import '../styles/Education.css';
 
+const ShowError = (props) => {
+  const { educationErrorMessage } = props;
+  if (educationErrorMessage === '') return null;
+
+  return <div className='education-error'>{educationErrorMessage}</div>;
+};
+
 const EndDate = (props) => {
   const { educationText, updateEducationText } = props;
   return (
@@ -25,57 +32,60 @@ const EducationForm = (props) => {
   );
 
   return (
-    <form id='school-form'>
-      <label>
-        School Name *
-        <input
-          type='text'
-          placeholder='School'
-          value={educationText.school}
-          onChange={(e) => updateEducationText(e, 'school')}
-          required
-        />
-      </label>
+    <div>
+      <h2>Education</h2>
+      <form id='school-form'>
+        <label>
+          School Name *
+          <input
+            type='text'
+            placeholder='School'
+            value={educationText.school}
+            onChange={(e) => updateEducationText(e, 'school')}
+            required
+          />
+        </label>
 
-      <label className='currently-enrolled'>
-        Still studying there?
-        <input
-          id='currentlyEnrolled'
-          type='checkbox'
-          name='currentlyEnrolled'
-          checked={educationText.currentlyEnrolled}
-          onChange={(e) => updateEducationText(e, 'currentlyEnrolled')}
-        />
-      </label>
+        <label className='currently-enrolled'>
+          Still studying there?
+          <input
+            id='currentlyEnrolled'
+            type='checkbox'
+            name='currentlyEnrolled'
+            checked={educationText.currentlyEnrolled}
+            onChange={(e) => updateEducationText(e, 'currentlyEnrolled')}
+          />
+        </label>
 
-      <label>
-        {educationText.currentlyEnrolled === false
-          ? 'Date Started'
-          : 'Date Started *'}
-        <input
-          type='text'
-          placeholder='Date Started'
-          value={educationText.dateStart}
-          onChange={(e) => updateEducationText(e, 'dateStart')}
-          required
-        />
-      </label>
+        <label>
+          {educationText.currentlyEnrolled === false
+            ? 'Date Started'
+            : 'Date Started *'}
+          <input
+            type='text'
+            placeholder='Date Started'
+            value={educationText.dateStart}
+            onChange={(e) => updateEducationText(e, 'dateStart')}
+            required
+          />
+        </label>
 
-      {showEndDate}
+        {showEndDate}
 
-      <label className='school-description'>
-        School Description
-        <textarea
-          name='schoolDescriptuon'
-          placeholder='School Description'
-          value={educationText.description}
-          onChange={(e) => updateEducationText(e, 'description')}
-        />
-      </label>
-      <button type='submit' onClick={addEducation}>
-        Add School
-      </button>
-    </form>
+        <label className='school-description'>
+          School Description
+          <textarea
+            name='schoolDescriptuon'
+            placeholder='School Description'
+            value={educationText.description}
+            onChange={(e) => updateEducationText(e, 'description')}
+          />
+        </label>
+        <button type='submit' onClick={addEducation}>
+          Add School
+        </button>
+      </form>
+    </div>
   );
 };
 
@@ -110,11 +120,12 @@ const Education = (props) => {
     addEducation,
     submitResume,
     editEducation,
+    educationErrorMessage,
   } = props;
 
   return (
     <div id='education'>
-      <h2>Education</h2>
+      <ShowError educationErrorMessage={educationErrorMessage} />
       {!submitResume && (
         <EducationForm
           educationText={educationText}
@@ -122,6 +133,7 @@ const Education = (props) => {
           addEducation={addEducation}
         />
       )}
+      {submitResume && educationItems.length > 0 && <h2>Education</h2>}
       {educationItems.map((education, i) => (
         <EducationItem
           key={education.id}
