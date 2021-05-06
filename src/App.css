@@ -4,8 +4,19 @@
   margin: auto;
 }
 
-header {
+#resume-generator header {
   width: fit-content;
   margin: auto;
   margin-top: 10px;
+}
+
+#resume-generator .submit-resume {
+  display: block;
+  padding: 8px;
+  border: 1px solid #343332;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+  width: fit-content;
+  margin: auto;
 }

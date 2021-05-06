@@ -1,0 +1,43 @@
+#contact-info {
+  margin-left: 20px;
+}
+
+#contact-info h2 {
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  width: 95vw;
+  max-width: 914px;
+  border-bottom: 1px dotted #343332;
+}
+
+#contact-info h4 {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+#contact-form label {
+  margin: 20px 0 20px 20px;
+  display: inline-block;
+}
+
+#contact-form input {
+  display: block;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #343332;
+}
+
+.contact-left {
+  display: inline-block;
+  margin-right: 25px;
+  margin-left: 20px;
+}
+
+.contact-right {
+  display: inline-block;
+}
+
+.contact-error {
+  margin-left: 20px;
+  color: #e83131;
+}

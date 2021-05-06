@@ -1,0 +1,91 @@
+#school-form p {
+  white-space: pre-wrap;
+}
+
+#education {
+  margin-left: 20px;
+  width: fit-content;
+}
+
+#education h2 {
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  width: 90vw;
+  max-width: 737px;
+  border-bottom: 1px dotted #343332;
+}
+
+#school-form label {
+  display: inline-block;
+  margin: 20px 0 20px 20px;
+}
+
+#school-form input,
+#school-form textarea {
+  display: block;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #343332;
+}
+
+#school-form #currentlyEnrolled {
+  display: inline;
+  margin-left: 15px;
+  transform: scale(1.5);
+}
+
+#school-form .school-description {
+  display: block;
+  width: fit-content;
+}
+
+#school-form .school-description textarea {
+  font-size: 16px;
+  width: 85vw;
+  max-width: 699px;
+  height: 100px;
+}
+
+#school-form button {
+  display: block;
+  padding: 8px;
+  border: 1px solid #343332;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+  width: fit-content;
+  margin: 20px;
+  margin: auto;
+}
+
+.saved-education {
+  display: block;
+  margin-left: 20px;
+  margin-bottom: 40px;
+}
+
+.school-name {
+  display: inline-block;
+  margin: 0;
+}
+
+.dates-studying {
+  margin: 0;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.saved-school-description {
+  margin-top: 8px;
+  white-space: pre-wrap;
+}
+
+.edit-school {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.education-error {
+  margin-left: 20px;
+  color: #e83131;
+}
