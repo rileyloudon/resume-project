@@ -2,6 +2,7 @@
   margin-left: 20px;
 }
 
+#contact-info h1,
 #contact-info h2 {
   padding-bottom: 5px;
   margin-bottom: 15px;
@@ -29,12 +30,12 @@
 
 .contact-left {
   display: inline-block;
-  margin-right: 25px;
   margin-left: 20px;
 }
 
 .contact-right {
   display: inline-block;
+  margin-left: 20px;
 }
 
 .contact-error {
