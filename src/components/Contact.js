@@ -20,7 +20,7 @@ const ContactForm = (props) => {
         <input
           id='name'
           type='text'
-          placeholder='Name'
+          placeholder='Name (Required)'
           value={contactText.name}
           onChange={(e) => updateInput(e, 'name')}
           required
@@ -32,7 +32,7 @@ const ContactForm = (props) => {
         <input
           id='address'
           type='text'
-          placeholder='Address'
+          placeholder='Address (Required)'
           value={contactText.address}
           onChange={(e) => updateInput(e, 'address')}
         />
@@ -43,7 +43,7 @@ const ContactForm = (props) => {
         <input
           id='city'
           type='text'
-          placeholder='City'
+          placeholder='City (Required)'
           value={contactText.city}
           onChange={(e) => updateInput(e, 'city')}
         />
@@ -54,7 +54,7 @@ const ContactForm = (props) => {
         <input
           id='number'
           type='tel'
-          placeholder='Phone Number'
+          placeholder='Phone Number (Required)'
           value={contactText.phone}
           onChange={(e) => updateInput(e, 'phone')}
         />
@@ -65,7 +65,7 @@ const ContactForm = (props) => {
         <input
           id='email'
           type='email'
-          placeholder='Email'
+          placeholder='Email (Required)'
           value={contactText.email}
           onChange={(e) => updateInput(e, 'email')}
           required

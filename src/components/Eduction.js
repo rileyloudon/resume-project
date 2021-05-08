@@ -14,7 +14,7 @@ const EndDate = (props) => {
       Last Day *
       <input
         type='text'
-        placeholder='Last Day'
+        placeholder='Last Day (Required)'
         value={educationText.dateEnd}
         onChange={(e) => updateEducationText(e, 'dateEnd')}
       />
@@ -39,7 +39,7 @@ const EducationForm = (props) => {
           School Name *
           <input
             type='text'
-            placeholder='School'
+            placeholder='School (Required)'
             value={educationText.school}
             onChange={(e) => updateEducationText(e, 'school')}
             required

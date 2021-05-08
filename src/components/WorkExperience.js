@@ -14,7 +14,7 @@ const EndDate = (props) => {
       Last Day *
       <input
         type='text'
-        placeholder='Last Day'
+        placeholder='Last Day (Required)'
         value={workText.dateEnd}
         onChange={(e) => updateWorkText(e, 'dateEnd')}
       />
@@ -37,7 +37,7 @@ const WorkForm = (props) => {
           Company Name *
           <input
             type='text'
-            placeholder='Company'
+            placeholder='Company (Required)'
             value={workText.company}
             onChange={(e) => updateWorkText(e, 'company')}
             required
@@ -59,7 +59,7 @@ const WorkForm = (props) => {
           Date Started *
           <input
             type='text'
-            placeholder='Date Started'
+            placeholder='Date Started (Required)'
             value={workText.dateStart}
             onChange={(e) => updateWorkText(e, 'dateStart')}
             required
